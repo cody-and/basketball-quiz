@@ -20,3 +20,21 @@ Things to practice:
 
 */
 
+var quizQuestions = [
+  {
+    selector: 
+    title:
+    style:
+  },
+  {
+    selector: 
+    title:
+    style:
+  },
+]
+
+function buildPage(pageElements){
+  for(var i=0; i<pageElements.length, i++){
+    var 
+  }
+}

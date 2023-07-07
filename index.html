@@ -14,17 +14,26 @@
       </a>
     </div>
     <div class="timer">
-      <h2>Time: </h2>
+      <h2>Time: <span id="timer">0</span> </h2>
     </div>
   </header>
   <div class="main-container">
-    
-
-
-
-
-
-
+    <div id="question-container">
+      <h2 id="question">Question goes here</h2>
+      <ul id="choices">
+        <li><button class="choice">Choice 1</button></li>
+        <li><button class="choice">Choice 2</button></li>
+        <li><button class="choice">Choice 3</button></li>
+        <li><button class="choice">Choice 4</button></li>
+      </ul>
+    </div>
+    <div id="game-over-container">
+      <h2>Game Over!</h2>
+      <form id="score-form">
+        <input type="text" id="initials" placeholder="Enter your initials">
+        <button type="submit" id="save-score">Save Score</button>
+      </form>
+    </div>
   </div>
   <script src="./script.js"></script>
 </body>

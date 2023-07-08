@@ -22,19 +22,110 @@ Things to practice:
 
 var quizQuestions = [
   {
-    selector: 
-    title:
-    style:
+    title: 'Which player won 6 championships with the Chicago Bulls in the 1990s?',
+    choices: ['Steve Kerr', 'Derrick Rose', 'Dennis Rodman', 'Michael Jordan'],
+    answer: 'Michael Jordan'
   },
   {
-    selector: 
-    title:
-    style:
+    title: 'How many regular season MVP trophies does Stephen Curry have?',
+    choices: ['3', '0', '2', '1'],
+    answer: '2'
   },
-]
+];
 
-function buildPage(pageElements){
-  for(var i=0; i<pageElements.length, i++){
-    var 
-  }
+
+var currentQuestionIndex = 0;
+var timer;
+var timerElement = document.getElementById('timer');
+
+function buildPage(questions) {
+  var questionContainer = document.getElementById('question-container');
+  var questionTitle = document.getElementById('question');
+  var choicesList = document.getElementById('choices');
+
+  questionTitle.textContent = '';
+  choicesList.innerHTML = '';
+
+  var currentQuestion = questions[currentQuestionIndex];
+  questionTitle.textContent = currentQuestion.title;
+  currentQuestion.choices.forEach(function (choice) {
+
+    var choiceButton = document.createElement('button');
+
+    choiceButton.classList.add('choice');
+
+    choiceButton.textContent = choice;
+    
+    choicesList.appendChild(choiceButton);
+
+    choiceButton.addEventListener('click', function () {
+      if (choice === currentQuestion.answer) {
+        // correct answer moves to the next question and rebuilds the page
+        currentQuestionIndex++;
+        if (currentQuestionIndex < quizQuestions.length) {
+          buildPage(quizQuestions);
+        } else {
+          endQuiz();
+        }
+      } else {
+        timer -= 10;
+        currentQuestionIndex++;
+        if (currentQuestionIndex < quizQuestions.length) {
+          buildPage(quizQuestions);
+        } else {
+          endQuiz();
+        }
+      }
+    });
+  });
 }
+
+
+// starts the quiz and hides the start button 
+function startQuiz() {
+  var startButton = document.getElementById('start-button');
+  var questionContainer = document.getElementById('question-container');
+
+  startButton.addEventListener('click', function () {
+    startTimer();
+    startButton.style.display = 'none';
+    questionContainer.style.display = 'block';
+    buildPage(quizQuestions);
+  });
+}
+
+// timer function that counts down from 60 and ends the quiz when it hits zero
+function startTimer() {
+  var timeLimit = 60; 
+  timer = timeLimit;
+
+  
+  var countdown = setInterval(function () {
+    timer--;
+    timerElement.textContent = timer;
+
+    if (timer <= 0) {
+      clearInterval(countdown);
+      endQuiz();
+    }
+  }, 1000);
+}
+
+// displays the game over container
+function endQuiz() {
+  var gameOverContainer = document.getElementById('game-over-container');
+  gameOverContainer.style.display = 'block';
+
+  var initialsInput = document.getElementById('initials');
+  var saveScoreButton = document.getElementById('save-score');
+
+  saveScoreButton.addEventListener('click', function (event) {
+    event.preventDefault();
+
+    var initials = initialsInput.value.trim();
+    var score
+
+  });
+}
+
+startQuiz();

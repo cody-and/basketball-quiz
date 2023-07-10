@@ -18,7 +18,7 @@ var quizQuestions = [
     {
     title: 'Who is the all-time leading scorer in NBA history?',
     choices: ['LeBron James', 'Kareem Abdul-Jabbar', 'Michael Jordan', 'Kobe Bryant'],
-    answer: 'Kareem Abdul-Jabbar'
+    answer: 'Lebron James'
     },
     
     {

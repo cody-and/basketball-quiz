@@ -6,19 +6,35 @@
   background-color: #7A0019;
 }
 
-.view-highscores {
+.view-highscores button {
   border: 1px solid black;
   padding: 5px 10px;
   background-color: #FFCC33;
 }
 
-.view-highscores a {
-  text-decoration: none;
+.view-highscores button:hover {
+  background-color: white;
+}
+
+#highscores-container {
+  display: none;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+}
+
+#highscores-container h2 {
+  font-size: 48px;
+  margin-bottom: 10px;
   color: black;
 }
 
-.view-highscores:hover {
-  background-color: white;
+#highscores-container div {
+  background-color: #7A0019;
+  padding: 10px;
+  margin-bottom: 5px;
 }
 
 .timer {
@@ -127,4 +143,12 @@
   flex-grow: 1;
   font-size: 24px;
   color: #FFFFFF;
+}
+
+#resultText{
+  color: black;
+  font-weight: bold;
+  font-size: 24px;
+  margin-top: 10px;
+  text-decoration: underline;
 }

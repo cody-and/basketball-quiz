@@ -1,25 +1,3 @@
-/*
-
-What data type can I use to store all the questions, and the answers that go with them?
-How can I present one set of question + answers on the screen one at a time, and move from to another?
-
-How can I tell whether the user has clicked on the right answer?
-How can I save high scores?
-
-Test with just 1-2 questions
-
-
-Set it up so that the display of the question and answers is the same, no matter which one is being displayed
-
-Things to practice:
-----------------------
-1. Create DOM elements and display them on the screen 
-2. Write a function that accepts an object, and displays the parts of the object on the screen
-3. Write a function that detects when a button is clicked, and provides details about that button
-
-
-*/
-
 var quizQuestions = [
   {
     title: 'Which player won 6 championships with the Chicago Bulls in the 1990s?',
@@ -152,12 +130,30 @@ var quizQuestions = [
 
 ];
 
-
+var score = 0;
 var currentQuestionIndex = 0;
 var timer;
 var timerElement = document.getElementById('timer');
+var usedQuestionIndexes = [];
 
-function buildPage(questions) {
+function getRandomQuestion(questions) {
+  if (usedQuestionIndexes.length === questions.length) {
+    return null;
+  }
+
+  var randomIndex;
+  var randomQuestion;
+
+  do {
+    randomIndex = Math.floor(Math.random() * questions.length);
+    randomQuestion = questions[randomIndex];
+  } while (usedQuestionIndexes.includes(randomIndex));
+
+  usedQuestionIndexes.push(randomIndex);
+  return randomQuestion;
+}
+
+function buildPage() {
   var questionContainer = document.getElementById('question-container');
   var questionTitle = document.getElementById('question');
   var choicesList = document.getElementById('choices');
@@ -165,60 +161,65 @@ function buildPage(questions) {
   questionTitle.textContent = '';
   choicesList.innerHTML = '';
 
-  var currentQuestion = questions[currentQuestionIndex];
+  var currentQuestion = getRandomQuestion(quizQuestions);
+  
+  if (currentQuestion === null) {
+    endQuiz();
+    return;
+  }
+
   questionTitle.textContent = currentQuestion.title;
+
   currentQuestion.choices.forEach(function (choice) {
-
     var choiceButton = document.createElement('button');
-
     choiceButton.classList.add('choice');
-
     choiceButton.textContent = choice;
-    
+
     choicesList.appendChild(choiceButton);
 
     choiceButton.addEventListener('click', function () {
       if (choice === currentQuestion.answer) {
-        // correct answer moves to the next question and rebuilds the page
-        currentQuestionIndex++;
-        if (currentQuestionIndex < quizQuestions.length) {
-          buildPage(quizQuestions);
-        } else {
-          endQuiz();
-        }
+        resultText.textContent = 'Correct!';
+        score += 1; 
+        timer +=5
       } else {
-        timer -= 10;
-        currentQuestionIndex++;
-        if (currentQuestionIndex < quizQuestions.length) {
-          buildPage(quizQuestions);
-        } else {
-          endQuiz();
-        }
+        resultText.textContent = 'Incorrect!';
+        timer -= 5;
       }
+      buildPage();
     });
   });
 }
 
-
-// starts the quiz and hides the start button 
 function startQuiz() {
   var startButton = document.getElementById('start-button');
   var questionContainer = document.getElementById('question-container');
+  var highScoresButton = document.getElementById('view-highscores-button');
+  var highScoresContainer = document.getElementById('highscores-container');
+  
+  highScoresButton.addEventListener('click', function (event) {
+    event.preventDefault();
+    displayHighScores();
+  }),
 
   startButton.addEventListener('click', function () {
     startTimer();
     startButton.style.display = 'none';
     questionContainer.style.display = 'block';
-    buildPage(quizQuestions);
+    buildPage();
+    hideHighscoresSection();
+
+    function hideHighscoresSection(){
+      hideHighscoresSection.style.display = 'none';
+    }
   });
 }
 
-// timer function that counts down from 60 and ends the quiz when it hits zero
 function startTimer() {
   var timeLimit = 60; 
   timer = timeLimit;
+  var timerElement = document.getElementById('timer');
 
-  
   var countdown = setInterval(function () {
     timer--;
     timerElement.textContent = timer;
@@ -230,7 +231,19 @@ function startTimer() {
   }, 1000);
 }
 
-// displays the game over container
+function saveScore(initials) {
+  var highScores = localStorage.getItem('highScores');
+  if (highScores) {
+    highScores = JSON.parse(highScores);
+  } else {
+    highScores = [];
+  }
+
+  highScores.push({ initials: initials, score: score });
+
+  localStorage.setItem('highScores', JSON.stringify(highScores));
+}
+
 function endQuiz() {
   var gameOverContainer = document.getElementById('game-over-container');
   gameOverContainer.style.display = 'block';
@@ -242,9 +255,34 @@ function endQuiz() {
     event.preventDefault();
 
     var initials = initialsInput.value.trim();
-    var score
+    var score = 0;
 
+    saveScore(initials, score);
   });
+}
+
+function displayHighScores() {
+  var highScores = localStorage.getItem('highScores');
+  var highScoresContainer = document.getElementById('highscores-container');
+
+  if (highScores) {
+    highScores = JSON.parse(highScores);
+    highScoresContainer.innerHTML = '';
+
+    var highScoresTitle = document.createElement('h2');
+    highScoresTitle.textContent = 'Highscores';
+    highScoresContainer.appendChild(highScoresTitle);
+
+    highScores.forEach(function (score) {
+      var scoreItem = document.createElement('div');
+      scoreItem.textContent = score.initials + ': ' + score.score;
+      highScoresContainer.appendChild(scoreItem);
+    });
+
+    highScoresContainer.style.display = 'block';
+  } else {
+    highScoresContainer.innerHTML = '<h2>Highscores</h2>No high scores available.';
+  }
 }
 
 startQuiz();

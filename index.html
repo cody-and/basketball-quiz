@@ -9,9 +9,9 @@
 <body>
   <header class="header-container">
     <div class="view-highscores">
-      <a href="">
+      <button id="view-highscores-button">
         <h2>View Highscores</h2>
-      </a>
+      </button>
     </div>
     <div class="header-title">
       <h1>Basketball Quiz</h1>
@@ -31,6 +31,9 @@
         <li><button class="choice">Choice 4</button></li>
       </ul>
     </div>
+    <div>
+      <p id="resultText"></p>
+    </div>
     <div id="game-over-container">
       <h2>Game Over!</h2>
       <form id="score-form">
@@ -38,6 +41,7 @@
         <button type="submit" id="save-score">Save Score</button>
       </form>
     </div>
+    <div id="highscores-container"></div>
   </div>
   <script src="./script.js"></script>
 </body>

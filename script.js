@@ -31,6 +31,125 @@ var quizQuestions = [
     choices: ['3', '0', '2', '1'],
     answer: '2'
   },
+  {
+    title: 'Which team holds the record for the most NBA championships?',
+    choices: ['Los Angeles Lakers', 'Boston Celtics', 'Chicago Bulls', 'Golden State Warriors'],
+    answer: 'Boston Celtics'
+    },
+    
+    {
+    title: 'Who is the all-time leading scorer in NBA history?',
+    choices: ['LeBron James', 'Kareem Abdul-Jabbar', 'Michael Jordan', 'Kobe Bryant'],
+    answer: 'Kareem Abdul-Jabbar'
+    },
+    
+    {
+    title: 'Which player has the most triple-doubles in NBA history?',
+    choices: ['Magic Johnson', 'Russell Westbrook', 'Oscar Robertson', 'LeBron James'],
+    answer: 'Russell Westbrook'
+    },
+    
+    {
+    title: 'Which NBA player has won the most Defensive Player of the Year awards?',
+    choices: ['Dikembe Mutombo', 'Rudy Gobert', 'Hakeem Olajuwon', 'Ben Wallace'],
+    answer: 'Dikembe Mutombo'
+    },
+    
+    {
+    title: 'Which NBA team holds the record for the longest winning streak in a single season?',
+    choices: ['Los Angeles Lakers', 'Golden State Warriors', 'Miami Heat', 'Chicago Bulls'],
+    answer: 'Golden State Warriors'
+    },
+    
+    {
+    title: 'Who is the youngest player to score 30,000 points in NBA history?',
+    choices: ['Kobe Bryant', 'LeBron James', 'Michael Jordan', 'Kevin Durant'],
+    answer: 'LeBron James'
+    },
+    
+    {
+    title: 'Which NBA player has won the most Most Valuable Player (MVP) awards?',
+    choices: ['LeBron James', 'Kareem Abdul-Jabbar', 'Michael Jordan', 'Bill Russell'],
+    answer: 'Kareem Abdul-Jabbar'
+    },
+    
+    {
+    title: 'Which player holds the record for the most three-pointers made in a single NBA season?',
+    choices: ['Stephen Curry', 'Klay Thompson', 'James Harden', 'Ray Allen'],
+    answer: 'Stephen Curry'
+    },
+    
+    {
+    title: 'Which NBA player has the highest career free-throw percentage?',
+    choices: ['Steve Nash', 'Stephen Curry', 'Dirk Nowitzki', 'Mark Price'],
+    answer: 'Steve Nash'
+    },
+    
+    {
+    title: 'Who is the only player to have won the NBA Finals MVP award with a losing team?',
+    choices: ['Jerry West', 'Magic Johnson', 'LeBron James', 'Allen Iverson'],
+    answer: 'Jerry West'
+    },
+    {
+    title: 'Who holds the record for the most points scored in a single NBA game?',
+    choices: ['Kobe Bryant', 'Wilt Chamberlain', 'Michael Jordan', 'Elgin Baylor'],
+    answer: 'Wilt Chamberlain'
+    },
+      
+    {
+    title: 'Which player has won the most NBA All-Star Game MVP awards?',
+    choices: ['Kobe Bryant', 'LeBron James', 'Michael Jordan', 'Shaquille ONeal'],
+    answer: 'Kobe Bryant'
+    },
+      
+    {
+    title: 'Who is the tallest player in NBA history?',
+    choices: ['Yao Ming', 'Shaquille ONeal', 'Manute Bol', 'Gheorghe Muresan'],
+    answer: 'Gheorghe Muresan'
+    },
+      
+    {
+    title: 'Which NBA player has the most career assists?',
+    choices: ['Magic Johnson', 'John Stockton', 'Jason Kidd', 'Steve Nash'],
+    answer: 'John Stockton'
+    },
+      
+    {
+    title: 'Who is the only player to have won the NBA MVP, Defensive Player of the Year, and Finals MVP in the same season?',
+    choices: ['Michael Jordan', 'LeBron James', 'Hakeem Olajuwon', 'Kawhi Leonard'],
+    answer: 'Hakeem Olajuwon'
+    },
+      
+    {
+    title: 'Which NBA team has the most championships in the 21st century?',
+    choices: ['San Antonio Spurs', 'Los Angeles Lakers', 'Miami Heat', 'Golden State Warriors'],
+    answer: 'Los Angeles Lakers'
+    },
+      
+    {
+    title: 'Who is the youngest player to win the NBA Rookie of the Year award?',
+    choices: ['LeBron James', 'Derrick Rose', 'Kevin Durant', 'Tim Duncan'],
+    answer: 'Derrick Rose'
+    },
+      
+    {
+    title: 'Which player holds the record for the most steals in NBA history?',
+    choices: ['Scottie Pippen', 'Gary Payton', 'Michael Jordan', 'John Stockton'],
+    answer: 'John Stockton'
+    },
+      
+    {
+    title: 'Which team holds the record for the most wins in a single NBA regular season?',
+    choices: ['Golden State Warriors', 'Chicago Bulls', 'Los Angeles Lakers', 'Boston Celtics'],
+    answer: 'Golden State Warriors'
+    },
+      
+   {
+    title: 'Who is the only player to win the NBA scoring title in his rookie season?',
+    choices: ['Allen Iverson', 'Kevin Durant', 'Elvin Hayes', 'Wilt Chamberlain'],
+    answer: 'Wilt Chamberlain'
+    }
+
 ];
 
 
